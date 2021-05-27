@@ -1,0 +1,4 @@
+/Users/lianna/Desktop/study/VE475/Homework/h1/code_h1_VE475/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/lianna/Desktop/study/VE475/Homework/h1/code_h1_VE475/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lianna/Desktop/study/VE475/Homework/h1/code_h1_VE475/cmake-build-debug/CMakeFiles/code.dir
+/Users/lianna/Desktop/study/VE475/Homework/h1/code_h1_VE475/cmake-build-debug/CMakeFiles/code_h1_VE475.dir
