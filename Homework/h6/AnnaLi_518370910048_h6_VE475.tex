@@ -1,0 +1,276 @@
+\documentclass[a4paper,12pt]{journal}
+\usepackage[dvipsnames, svgnames, x11names]{xcolor} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphics}
+\usepackage{ulem}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\usepackage{xcolor}
+\usepackage[greek,english]{babel}
+\usepackage{chemformula}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{enumerate} % List
+\usepackage{tikz}
+\pagestyle{fancy}
+\rmfamily
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[R]{VE475 HW5}
+\title{VE475 Homework5}
+\author{Anna Li \\Student ID: 518370910048}
+\date{\today}
+\lstset{
+	columns=fixed,     
+	numbers=left,                                        % 在左侧显示行号
+	numberstyle=\tiny\color{gray},                       % 设定行号格式
+	frame=none,                                          % 不显示背景边框
+	backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+	keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+	numberstyle=\footnotesize\color{darkgray},           
+	commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+	stringstyle=\ttfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+	showstringspaces=false,                              % 不显示字符串中的空格                                        % 设置语言
+}
+\begin{document}
+	\maketitle
+		\section*{Ex. 1 - RSA setup}
+		\begin{enumerate}
+			\item In RSA encryption, we use
+			\begin{align*}
+				ed \equiv 1 &\mod \varphi(n)
+			\end{align*}
+			\par Assuming $m$ and $n$ be two coprime integers, we would have
+			\begin{align*}
+				c^{d} \equiv m^{ed} \equiv m^{ed \mod \varphi(n)} \equiv m &\mod n,
+			\end{align*}
+			Therefore, it is likely for $n$ to be coprime with $m$.
+			
+			\item Assuming $k = a\varphi(n)$, where $a \in \mathbb{N}$. % Also, assume $m < n$.
+			\begin{enumerate}[a)]
+				\item According to Euler's theorem,
+				\begin{align*}
+					m^{k} \equiv m^{a\varphi(n)} \equiv  (m^{\varphi(n)})^{a} \equiv 1^a \equiv 1 &\mod n \\
+				\end{align*}
+				\par Since $n = pq$,  $m^{k} \equiv 1 \mod p$ and $m^{k} \equiv 1 \mod q$.
+				
+				\item If $\gcd(m,n) = 1$, according to the result of the above question,  $m^{k+1} \equiv m \mod p$ and $m^{k+1} \equiv m \mod q$.
+				\par If $\gcd(m,n) = p$, we can have $\gcd(m/p, q) = 1$, thus $(m/p)^{\varphi(q)} \equiv 1 \mod q$.
+				\begin{align*}
+					m^{k+1} &\equiv  p \left[\left(\frac{m}{p}\right)^{k+1} \mod q\right] \mod n \\
+					&\equiv p \left[\left(\frac{m}{p}\right)^{a\varphi(p)\varphi(q)+1} \mod q\right] \mod n \\
+					&\equiv p \cdot \frac{m}{p} \mod n \\
+					&\equiv m \mod n
+				\end{align*}
+				\par So, $m^{k} \equiv 1 \mod p$ and $m^{k} \equiv 1 \mod q$.
+				\par If $\gcd(m,n) = q$, similar to the case of $\gcd(m,n) = p$, we would have  $m^{k} \equiv 1 \mod p$ and $m^{k} \equiv 1 \mod q$.
+			\end{enumerate}
+			
+			\item \begin{enumerate}[a)]
+				\item Since $ed \equiv 1 \mod \varphi(n)$, $ed = k + 1$. $\Rightarrow m^{ed} \equiv m \mod n$ for all $m$.
+				
+				\item Therefore, no matter whether $m$ and $n$ are coprime or not, $c^{d} \equiv m^{ed} \equiv m \mod n$ in decryption. Therefore,  there's no need for having $\gcd(m,n) = 1$.
+			\end{enumerate}
+		\end{enumerate}
+		
+		
+		
+		\section*{Ex. 2 - RSA decryption}
+		\par Since $n = 101 \times 113$, thus $\varphi(n) = 100 \times 112 = 11200$. According to the extended Euclidean algorithm,  $d = 3 = (11)_{2}$ such that $ed \equiv 1 \mod \varphi(n)$. Then the plaintext $m$ would given by calculating $c^{d} \equiv m \mod n$. We can use modular exponentiation to find $m$.
+		\begin{table}[!ht]
+			\centering
+			\begin{tabular}{l|l|l}
+				$i$ & $d_{i}$ & $power \mod 11413$ \\
+				\hline
+				$1$ & $1$ & $1^{2} \cdot 5859 \equiv 5859$ \\
+				$0$ & $1$ & $5859^{2} \cdot 5859 \equiv 1415$
+			\end{tabular}
+		\end{table}
+		\par So, $m = 1415$.
+		
+		
+		
+		\section*{Ex. 3 - Breaking RSA}
+		\begin{enumerate}
+			\item When $d$ is small, the calculation of $c^{d} \equiv m \mod n$ would be faster.
+			
+			\item Since $ed \equiv 1 \mod \varphi(n)$, we have
+			\begin{align*}
+				ed &= K \times \varphi(pq) + 1 \\
+				&= K \times \mathrm{lcm}(p-1, q-1) + 1
+			\end{align*}
+			\par Define $G = \gcd(p-1,q-1)$, then we would have
+			\begin{align*}
+				ed = \frac{K}{G}(p-1)(q-1) + 1
+			\end{align*}
+			\par Then, define $k = \frac{K}{\gcd(K,G)}$ and $g = \frac{G}{\gcd(K,G)}$, and we would have
+			\begin{align*}
+				ed &= \frac{k}{g}(p-1)(q-1) + 1 \\
+				\frac{ed}{dpq} &= \frac{k}{dg}\frac{(p-1)(q-1)}{pq} + \frac{1}{dpq} \\
+				\frac{e}{pq} &= \frac{k}{dg}(1-\delta),
+			\end{align*}
+			$\delta = \frac{p + q - 1 - \frac{g}{k}}{pq}$. \\
+			Since $p$ and $q$ are two large primes, $\delta$ would be small, then $\frac{e}{pq}$ is slightly smaller than $\frac{k}{dg}$. Also, since $ed = \frac{k}{g}(p-1)(q-1) + 1$, let $k^{*} = \dfrac{k}{g}$ we can have
+			\begin{align*}
+				(p-1)(q-1) = \varphi(n) = \frac{ed-1}{k^{*}},
+			\end{align*}
+			where $\dfrac{e}{n}$ is slightly smaller than $\dfrac{k^{*}}{d}$. Then continued fractions is applied on $\frac{e}{pq}$ to obtain multiple approximated $\frac{k^{*}}{d}$ validate them and get the right $d$ if the equation $x^{2} - (n-\varphi(n) + 1)x + n = 0$, where $\varphi(n) = \frac{ed - 1}{k^{*}}$, has two valid solutions which are $p$ and $q$.
+			
+			\item According to Wiener's theorem, if $d < \frac{1}{3}n^{\frac{1}{4}}$, the attacker can efficiently recover $d$. So, $d$ should be larger than $\frac{1}{3}n^{\frac{1}{4}}$.
+			
+			\item By applying continued fractions on $\frac{e}{n}$, we have
+			\begin{align*}
+				\frac{77537081}{317940011} = 0 + \frac{1}{4 + \frac{1}{9 + \frac{1}{1 + \frac{1}{19 + \cdots}}}}
+			\end{align*}
+			\par Then we have convergent $\frac{k^{*}}{d}$: $0, \frac{1}{4}, \frac{9}{37}, \frac{10}{41}, \frac{199}{816},\cdots$. And according to Wiener's theorem, $d < \frac{1}{3}n^{\frac{1}{4}} < 45$, we can start with $\frac{1}{4}$ and have
+			\begin{align*}
+				(n - \varphi(n) + 1)^{2} - 4n &= (n - \frac{ed - 1}{k^{*}} + 1)^{2} - 4n = 60709145712677,
+			\end{align*}
+			which is not a square number.
+			\par Then try next possible $\frac{k^{*}}{d}$, and when $\frac{k^{*}}{d} = \frac{10}{41}$, we have
+			\begin{align*}
+				(n - \varphi(n) + 1)^{2} - 4n &= (n - \frac{ed - 1}{k^{*}} + 1)^{2} - 4n = 170720356 = 13066^{2},
+			\end{align*}
+			so $p = \frac{37980 + 13066}{2} = 25523$ and $q = \frac{37980 - 13066}{2} = 12457$, thus $n = 12457 \times 25523$.
+		\end{enumerate}
+		
+		
+		
+		\section*{Ex. 5 - Simple questions}
+		\begin{enumerate}
+			\item 
+			
+			\item No, this double encryption isn't adding any security. The nature of breaking RSA is to factorize $n$, using double exponents won't make it more secure.
+			
+			\item Since $n = 642401$, we have
+			\begin{align*}
+				4 \cdot 516107^{2} - 187722^{2} &\equiv 0 \mod n \\
+				(2 \cdot 516107 - 187722)(2 \cdot 516107 + 187722) &\equiv 0 \mod n \\
+				844492 \cdot 1219936 &\equiv 0 \mod n \\
+				(-440310) \cdot (-64866) &\equiv0 \mod n \\
+				(2 \cdot 3 \cdot 5 \cdot 13 \cdot 1129) \cdot (2 \cdot 3 \cdot 19 \cdot 569) &\equiv 0 \mod n
+			\end{align*}
+			\par So, we would get $n = 642401 = 569 \times 1129$.
+			
+			\item With three primes $p$, $q$, and $r$, $n = pqr$ and $\varphi(n) = (p-1)(q-1)(r-1)$. Find $e$ such that $\gcd(e, \varphi(n)) = 1$, and then find $d$ such that
+			\begin{align*}
+				ed \equiv 1 \mod \varphi(n)
+			\end{align*}
+			\par Then
+			\begin{align*}
+				c &\equiv m^{e} \mod n \\
+				m &\equiv c^{d} \equiv m^{ed} \equiv m^{\varphi(n) + 1} \mod n
+			\end{align*}
+			\par If the length of the public keys are same in both cases, it would result in short separate primes, making the factorization easier.
+			
+			\item Since $97 - 1 = 96 = 2^{5} \times 3$, then a $\alpha$ is a generator if $\alpha^{48} \not\equiv 1 \mod 97$ and $\alpha^{32} \not\equiv 1 \mod 97$. Or, since $32 = 2 \times 16$ and $48 = 3 \times 16$, we can first calculate $2$
+			\begin{align*}
+				\alpha^{16} \not\equiv \pm 1, 35, 61 \mod 97
+			\end{align*}
+			\par We can take the numbers in consequence and have
+			\begin{align*}
+				2^{16} &\equiv 61 \mod 97 \\
+				3^{16} &\equiv 61 \mod 97 \\
+				4^{16} &\equiv 1  \mod 97 \\
+				5^{16} &\equiv 36 \mod 97
+			\end{align*}
+			\par So, $5$ is the smallest generator of the group.
+			
+			\item \begin{enumerate}[a)]
+				\item Since $101 - 1 = 100 = 2^{2} \times 5^{2}$, we would have
+				\begin{align*}
+					2^{\frac{100}{2}} \equiv 2^{50} \equiv 100 \not\equiv \mod 101
+				\end{align*}
+				Also,
+				\begin{align*}
+					2^{\frac{100}{5}} \equiv 2^{20} \equiv 95 \not\equiv 1 \mod 101
+				\end{align*}
+				\par So, $2$ is a generator of $G$.
+				
+				\item Since $\log_{2}2 = 1$, we would have
+				\begin{align*}
+					\log_{2}24 = \log_{2}3 + 3\log_{2}2 = 69 + 3 = 72
+				\end{align*}
+				
+				\item Since in group $G$,
+				\begin{align*}
+					\log_{2}24 = \log_{2}(24 + 101) = \log_{2}(125) = 3\log_{5} = 3 \times 24 = 72
+				\end{align*}
+			\end{enumerate}
+			
+			\item Since $\gcd(3, 137) = 1$, we have $3^{\varphi(137)} \equiv 3^{136} \equiv \mod 137$. Also, notice that $44 = 2^{2} \times 11$, we would have
+			\begin{align*}
+				3^{6} \equiv 3^{136 + 6} \equiv 3^{142} \equiv 44 \equiv 2^{2} \times 11 \equiv (3^{10})^{2} \times 3^{x} \mod 137
+			\end{align*}
+			\par So, $x = 142 - 2 \times 10 = 122$.
+			
+			\item \begin{enumerate}[a)]
+				\item Since $6^{5} \equiv 10 \mod 11$, $6^{5}$ in $G$ is $10$.
+				
+				\item For $q \vert (p-1)$, $q \in \{2, 5\}$.
+				\begin{align*}
+					2^{\frac{10}{2}} \equiv 10 \not\equiv 1 &\mod 11 \\
+					2^{\frac{10}{5}} \equiv 4 \not\equiv 1 &\mod 11
+				\end{align*}
+				\par So $2$ is a generator of $G$.
+				
+				\item From previous result, we have
+				\begin{align*}
+					2^{5x} \equiv 10^{x} \equiv (-1)^{x} \mod 11
+				\end{align*}
+				\par Also,
+				\begin{align*}
+					2^{5x} \equiv 6^{5} \equiv -1 \mod 11
+				\end{align*}
+				\par So, $(-1)^{x} = -1$, thus $x$ is odd.
+			\end{enumerate}
+		\end{enumerate}
+		
+		
+		
+		\section*{Ex. 6 - DLP}
+		\begin{enumerate}
+			\item From what we known, we can have
+			\begin{align*}
+				3^{x} &\equiv 2 \mod 65537 \\
+				3^{16x} &\equiv -1 \mod 65537 \\
+				3^{32x} &\equiv 1 \mod 65537
+			\end{align*}
+			\par Since $3$ and $65537$ are coprime integers and $\varphi(65537) = 65536$, we would also have
+			\begin{align*}
+				3^{65536} \equiv 1 \mod 65537
+			\end{align*}
+			\par So $65536 \vert 32x$ and $65536 \nmid 16x$, which gives that $2048$ divides $x$, while $4096$ does not.
+			
+			\item Let $x = (2k + 1)\cdot 2048$, where $k \in \mathbb{N}$. And there are $16$ possible choices for $k$, which are $0, 1, 2, \cdots, 15$. And when $k = 13$ ($x = 55296$), we have $3^{x} \equiv 2 \mod 65537$.
+			
+			\item Since $x\vert 2048$ and $x \nmid 4096$, we can apply the Pohlig-Hellman algorithm by using
+			\begin{align*}
+				x = 2^{11} + a_{12}2^{12} + a_{13}2^{13} + a_{14}2^{14} + a_{15}2^{15}
+			\end{align*}
+			\par For $a_{12}$,
+			\begin{align*}
+				\left(\frac{3^{x}}{3^{2^{11}}}\right)^{2^{15-12}} \equiv (2^{14})^8 \equiv -1 \mod 65537
+			\end{align*}
+			\par So, $a_{12} = 1$.
+			\par For $a_{13}$,
+			\begin{align*}
+				\left(\frac{3^{x}}{3^{2^{11}+2^{12}}}\right)^{2^{15-13}} \equiv (2^{8})^4 \equiv 1 \mod 65537
+			\end{align*}
+			\par So, $a_{13} = 0$.
+			\par Similarly, we would have $a_{14} = 1$ and $a_{15} = 1$, which gives
+			\begin{align*}
+				x = 2^{11} + 2^{12} + 2^{14} + 2^{15} = 55296.
+			\end{align*}
+			
+			\item $65537$ is a prime but in the form $p^{k} + 1$. If $c^{x} \equiv p \mod p^{k} + 1$, in order to find $x$, we can find a generator of the group and since $c^{2k} \equiv p^{2k} \equiv 1 \mod p^{k} + 1$, we can find $\frac{p^{k}}{2k} \vert x$ and $\frac{p^{k}}{k} \nmid x$. Then there would only be $k$ possible choices for $x$.
+		\end{enumerate}
+ \end{document}
