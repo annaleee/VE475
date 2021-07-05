@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher2/RC4.h
+
+C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher2/main.cpp
+cstdio
+-
+RC4.h
+C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher2/RC4.h
+cstring
+-
+iostream
+-
+

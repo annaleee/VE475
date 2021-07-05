@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/AES.c
+AES.h
+C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/AES.h
+
+C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/AES.h
+stdio.h
+-
+stdlib.h
+-
+stdint.h
+-
+memory.h
+-
+
