@@ -37,6 +37,6 @@ void rc4_crypt(struct rc4_state *const state, const unsigned char *inbuf, unsign
         swap_bytes(&state->perm[state->index1], &state->perm[state->index2]);
         /* Encrypt/decrypt next byte */
         j = (state->perm[state->index1] + state->perm[state->index2]) % 256;
-        outbuf[i] = inbuf[i] ^ state->perm[j];
+        outbuf[i] = inbuf[i] ^ state->perm[j] ;
     }
 }

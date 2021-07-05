@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cipher2.dir/RC4.cpp.obj"
-  "CMakeFiles/cipher2.dir/main.cpp.obj"
-  "cipher2.exe"
-  "cipher2.exe.manifest"
+  "CMakeFiles/cipher2.dir/RC4.cpp.o"
+  "CMakeFiles/cipher2.dir/main.cpp.o"
+  "cipher2"
   "cipher2.pdb"
-  "libcipher2.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

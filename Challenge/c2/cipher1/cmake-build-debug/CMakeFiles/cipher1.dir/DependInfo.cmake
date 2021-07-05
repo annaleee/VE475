@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/AES.c" "C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/cmake-build-debug/CMakeFiles/cipher1.dir/AES.c.obj"
-  "C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/main.c" "C:/Users/Lenovo/Shy/Junior_summer/VE475/C2/cipher1/cmake-build-debug/CMakeFiles/cipher1.dir/main.c.obj"
+  "/Users/annalee/Desktop/study/VE475/Challenge/c2/cipher1/AES.c" "/Users/annalee/Desktop/study/VE475/Challenge/c2/cipher1/cmake-build-debug/CMakeFiles/cipher1.dir/AES.c.o"
+  "/Users/annalee/Desktop/study/VE475/Challenge/c2/cipher1/main.c" "/Users/annalee/Desktop/study/VE475/Challenge/c2/cipher1/cmake-build-debug/CMakeFiles/cipher1.dir/main.c.o"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
