@@ -1,0 +1,36 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Lattice}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Equivalent Bases}{6}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{1}{Column View}{6}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{2}{Matrix View}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Lattice meaning to space}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{Successive Minima}{10}{0}{2}
+\beamer@subsectionintoc {2}{4}{Gram-Schmidt Orthogonalization}{11}{0}{2}
+\beamer@subsectionintoc {2}{5}{Minkowski's Theorem}{12}{0}{2}
+\beamer@sectionintoc {3}{Basic Computation Lattice Problems}{13}{0}{3}
+\beamer@subsectionintoc {3}{1}{Shortest Vector Problem (SVP)}{13}{0}{3}
+\beamer@subsubsectionintoc {3}{1}{1}{Hardness}{14}{0}{3}
+\beamer@subsubsectionintoc {3}{1}{2}{GapSVP}{15}{0}{3}
+\beamer@subsectionintoc {3}{2}{Closest vector problem (CVP)}{16}{0}{3}
+\beamer@subsubsectionintoc {3}{2}{1}{Hardness}{17}{0}{3}
+\beamer@subsubsectionintoc {3}{2}{2}{Summary}{18}{0}{3}
+\beamer@sectionintoc {4}{Advantage of Lattice-based cryptography}{18}{0}{4}
+\beamer@subsectionintoc {4}{1}{Efficient algorithm and high concurrency}{20}{0}{4}
+\beamer@subsectionintoc {4}{2}{Worst case to average case reduction}{21}{0}{4}
+\beamer@sectionintoc {5}{Shortest Integer Solution Problem (SIS)}{22}{0}{5}
+\beamer@subsectionintoc {5}{1}{Definition}{23}{0}{5}
+\beamer@subsectionintoc {5}{2}{One-Way \& Collision-Resistant Hash Function using SIS}{24}{0}{5}
+\beamer@subsectionintoc {5}{3}{Worst-case to Average-case Reduction}{25}{0}{5}
+\beamer@subsubsectionintoc {5}{3}{1}{Uniform Distribution Over Lattices}{25}{0}{5}
+\beamer@subsubsectionintoc {5}{3}{2}{The Reduction}{29}{0}{5}
+\beamer@sectionintoc {6}{Learning With Errors Problem (LWE)}{29}{0}{6}
+\beamer@subsectionintoc {6}{1}{Definition of LWE}{29}{0}{6}
+\beamer@subsubsectionintoc {6}{1}{1}{Search problem}{29}{0}{6}
+\beamer@subsubsectionintoc {6}{1}{2}{Decision problem}{32}{0}{6}
+\beamer@subsectionintoc {6}{2}{Average Hardness}{33}{0}{6}
+\beamer@sectionintoc {7}{Ring learning with errors key exchange}{34}{0}{7}
+\beamer@sectionintoc {8}{Possible Attack for Lattice-based Cryptography}{34}{0}{8}
+\beamer@subsectionintoc {8}{1}{Fault Attacks}{34}{0}{8}
+\beamer@subsectionintoc {8}{2}{Effective Attacks}{38}{0}{8}
+\beamer@subsubsectionintoc {8}{2}{1}{Physical Attack}{38}{0}{8}
+\beamer@subsubsectionintoc {8}{2}{2}{Cryptanalysis of GGH}{39}{0}{8}
